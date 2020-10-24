@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+    Layout = null;
+}
+
+<form method="post" action="~/Dict/UpdateSave">
+    <input type="hidden" id="id" name="id" value="@ViewBag.Contact.Id" />
+    <input type="text" id="surname" name="surname" value="@ViewBag.Contact.Surname" />
+    <input type="text" id="telephone" name="telephone" value="@ViewBag.Contact.PhoneNumber" />
+    <input type="submit" value="Save" />
+</form>
+
+
+
+

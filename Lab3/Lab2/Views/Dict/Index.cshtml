@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<div>
+
+
+    <form method="get" action="~/Dict/Add">
+        <input type="submit" value="Add" />
+    </form>
+
+    <form method="get" action="~/Dict/Update">
+        <input type="hidden" id="selectedItemId" name="selectedItemId" value="" />
+        <input type="submit" value="Update" />
+    </form>
+
+    <form method="get" action="~/Dict/Delete">
+        <input type="submit" value="Delete" />
+        <input type="hidden" id="delSelectedItemId" name="selectedItemId" value="" />
+    </form>
+
+    <table border="1">
+        <tr>
+            <td>Select</td>
+            <td>Name</td>
+            <td>Phone</td>
+        </tr>
+        @foreach (var item in ViewBag.Contacts)
+        {
+            <tr>
+                <td><input type="radio" name="item" id="@item.Id" onchange="change()" /></td>
+                <td>@item.Surname</td>
+                <td>@item.PhoneNumber</td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+<script>
+    function change() {
+        var selectedItems = document.getElementsByName("item");
+        var updateItem = document.querySelector("#selectedItemId");
+        var deleteItem = document.querySelector("#delSelectedItemId");
+
+        selectedItems.forEach(item => {
+            if (item.checked) {
+                updateItem.value = String(item.id)
+                deleteItem.value = String(item.id)
+            }
+        });
+    }
+</script>
+

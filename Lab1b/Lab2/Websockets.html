@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <header><h1>Web Scockets</h1></header>
+    <section style="width: 215px;border:solid;">
+        <div style="margin: 5px">
+            <input id="bstart" type="button" value="Start"
+                   onclick="startExe()" />
+            <input id="bstop" type="button" value="Stop"
+                   onclick="stopExe()" />
+            <textarea id="ta" rows="20" cols="25"
+                      style="text-align: center;" readonly></textarea>
+        </div>
+    </section>
+    <script>
+        var ta = document.querySelector("#ta");;
+        var ws = null;
+        var bstart = document.querySelector("#bstart"),
+            bstop = document.querySelector("#bstop");
+
+        window.onload = function () {
+            bstart.disabled = false;
+            bstop.disabled = true;
+        }
+
+  
+
+        function startExe() {
+            if (ws == null) {
+                ws = new WebSocket("wss://172.16.193.234:41119/Websockets.websocket");
+                ws.onopen = function () { ws.send("Connection"); }
+                ws.onclose = function (s) { console.log("onclose", s); }
+                ws.onmessage = function (event) { ta.innerHTML += "\n" + event.data; }
+                bstart.disabled = true;
+                bstop.disabled = false;
+            }
+        }
+
+        function stopExe() {
+            ws.close(3001, "stopApp");
+            ws = null;
+            bstart.disabled = false;
+            bstop.disabled = true;
+        }
+    </script>
+</body>
+</html>
