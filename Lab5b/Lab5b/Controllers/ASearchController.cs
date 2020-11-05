@@ -6,11 +6,10 @@ using System.Web.Mvc;
 
 namespace Lab5b.Controllers
 {
-    [RoutePrefix("ASearch")]
     public class ASearchController : Controller
     {
         [MyAction]
-        [Route("AA")]
+        [Route("~/ASearch/AA")]
         public string AA()
         {
             return "<br/>Action: AA";

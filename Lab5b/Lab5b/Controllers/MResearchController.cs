@@ -22,23 +22,21 @@ namespace Lab5b.Controllers
             return Request.HttpMethod + ":M02:/" + bVal + "/" + sVal;
         }
 
-        [HttpDelete]
-        [HttpGet]
-        [Route("{fVal:float}/{sVal:length(2,5)}")]
+        [AcceptVerbs("GET", "DELETE")]
         public string M03(float fVal, string sVal)
         {
-            return Request.HttpMethod + ":M02:/" + fVal + "/" + sVal;
+            return Request.HttpMethod + ":M03:/" + fVal + "/" + sVal;
         }
 
         [HttpPut]
         [Route("{sVal:length(3,4)}/{iVal:int:min(100):max(200)}")]
         public string M04(string sVal, int iVal)
         {
-            return "PUT:M02:/" + sVal + "/" + sVal;
+            return "PUT:M04:/" + sVal + "/" + iVal;
         }
 
         [HttpPost]
-        [Route(@"{sMail:regex(^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$)}")]
+        [Route(@"{sMail:regex()}")]
         public string M05(string sMail)
         {
             return "Post:mail = " + sMail;

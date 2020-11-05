@@ -38,9 +38,9 @@ namespace lab5.Controllers
         //M03
         [HttpGet]
         [Route("~/V3")]
-        [Route("~/V3/MResearch/{name:alpha}")]
-        [Route("~/V3/MResearch/{name:alpha}/M03")]
-        public string M03(string name)
+        [Route("~/V3/MResearch/X")]
+        [Route("~/V3/MResearch/X/M03")]
+        public string M03()
         {
             return "Get:M03";
         }
