@@ -7,28 +7,31 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Lab2.Models;
-
+//using ContactLib;
+using ContactLibSQL;
 namespace Lab2.Controllers
 {
     public class DictController : Controller
     {
-        private ContactContext db = new ContactContext();
-
-        // GET: Dict
-        public async Task<ActionResult> Index()
+        private IContactContext<Contact> db = null;
+        public DictController(IContactContext<Contact> db)
         {
-            return View(await db.Contacts.ToListAsync());
+            this.db = db;
+        }
+        // GET: Dict
+        public ActionResult Index()
+        {
+            return View(db.GetConList());
         }
 
         // GET: Dict/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = await db.Contacts.FindAsync(id);
+            Contact contact = db.GetContact(id);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -45,12 +48,11 @@ namespace Lab2.Controllers
         // POST: Dict/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Surname,PhoneNumber")] Contact contact)
+        public ActionResult Create([Bind(Include = "Id,Surname,PhoneNumber")] Contact contact)
         {
             if (ModelState.IsValid)
             {
-                db.Contacts.Add(contact);
-                await db.SaveChangesAsync();
+                db.Add(contact);
                 return RedirectToAction("Index");
             }
 
@@ -58,13 +60,13 @@ namespace Lab2.Controllers
         }
 
         // GET: Dict/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = await db.Contacts.FindAsync(id);
+            Contact contact = db.GetContact(id);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -75,25 +77,24 @@ namespace Lab2.Controllers
         // POST: Dict/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Surname,PhoneNumber")] Contact contact)
+        public ActionResult Edit([Bind(Include = "Id,Surname,PhoneNumber")] Contact contact)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(contact).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.Update(contact);
                 return RedirectToAction("Index");
             }
             return View(contact);
         }
 
         // GET: Dict/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = await db.Contacts.FindAsync(id);
+            Contact contact = db.GetContact(id);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -104,21 +105,10 @@ namespace Lab2.Controllers
         // POST: Dict/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Contact contact = await db.Contacts.FindAsync(id);
-            db.Contacts.Remove(contact);
-            await db.SaveChangesAsync();
+            db.Delete(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

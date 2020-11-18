@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Lab2.Models
+namespace ContactLib
 {
-    [Table("Contacts")]
     public class Contact
     {
-        [Key]
         public int Id { get; set; }
         public string Surname { get; set; }
         public string PhoneNumber { get; set; }
+        public Contact() { }
     }
 }
