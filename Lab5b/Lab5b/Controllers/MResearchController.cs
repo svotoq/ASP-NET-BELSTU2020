@@ -15,7 +15,7 @@ namespace Lab5b.Controllers
         {
             return "Get:M01:/" + iVal + "/" + sVal;
         }
-
+        [AcceptVerbs("GET", "POST")]
         [Route("{bVal:bool}/{sVal:alpha}")]
         public string M02(bool bVal, string sVal)
         {
@@ -23,20 +23,21 @@ namespace Lab5b.Controllers
         }
 
         [AcceptVerbs("GET", "DELETE")]
+        [Route("{fVal:float}/{sVal:length(1,6)}")]
         public string M03(float fVal, string sVal)
         {
             return Request.HttpMethod + ":M03:/" + fVal + "/" + sVal;
         }
 
         [HttpPut]
-        [Route("{sVal:length(3,4)}/{iVal:int:min(100):max(200)}")]
-        public string M04(string sVal, int iVal)
+        [Route("{sVal:length(2,5)}/{iVal:range(100, 200)}")]
+        public string M04(string sVal, int? iVal)
         {
             return "PUT:M04:/" + sVal + "/" + iVal;
         }
 
         [HttpPost]
-        [Route(@"{sMail:regex()}")]
+        [Route(@"{sMail:regex(^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$)}")]
         public string M05(string sMail)
         {
             return "Post:mail = " + sMail;

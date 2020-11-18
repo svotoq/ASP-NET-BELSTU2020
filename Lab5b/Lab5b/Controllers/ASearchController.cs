@@ -8,8 +8,9 @@ namespace Lab5b.Controllers
 {
     public class ASearchController : Controller
     {
+        //not get
         [MyAction]
-        [Route("~/ASearch/AA")]
+        [Route("AA")]
         public string AA()
         {
             return "<br/>Action: AA";
