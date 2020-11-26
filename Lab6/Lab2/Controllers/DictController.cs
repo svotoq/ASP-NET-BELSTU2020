@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-//using ContactLib;
-using ContactLibSQL;
+using ContactLib;
+//using ContactLibSQL;
 namespace Lab2.Controllers
 {
     public class DictController : Controller

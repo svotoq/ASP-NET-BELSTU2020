@@ -40,7 +40,7 @@ namespace ContactLibSQL
         {
             using (AppContext db = new AppContext())
             {
-                Contact contact = db.Contacts.Where(p => p.Id.Equals(id)).FirstOrDefault();
+                Contact contact = db.Contacts.FirstOrDefault(con => con.Id == id);
                 db.Contacts.Remove(contact);
                 db.SaveChanges();
             }

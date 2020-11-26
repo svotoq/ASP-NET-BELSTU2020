@@ -16,14 +16,14 @@ namespace Lab5b.Controllers
         public string AD()
         {
             x++;
-            return "AD: x=" + x;
+            return "AD: x=" + x; 
         }
 
         [HttpPost]
-        [OutputCache(Duration = 7, Location = OutputCacheLocation.Any, VaryByParam = "none")]
+        [OutputCache(Duration = 7, Location = OutputCacheLocation.Any, VaryByParam ="x")]
         public string AP(string x, int y)
         {
-            return "AP: x=" + x + "; y=" + y;
+            return HttpContext.Timestamp.ToString();
         }
     }
 }

@@ -8,8 +8,9 @@ namespace Lab5b.Controllers
 {
     public class ASearchController : Controller
     {
-        //not get
+        //works when action doesn't use the GET method
         [MyAction]
+        [MyResult]
         [Route("AA")]
         public string AA()
         {
