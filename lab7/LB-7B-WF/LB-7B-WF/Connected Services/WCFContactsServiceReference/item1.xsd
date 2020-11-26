@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8733/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LB_7C.Model" />
+  <xs:element name="GetPhoneContacts">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPhoneContactsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/LB_7C.Model" minOccurs="0" name="GetPhoneContactsResult" nillable="true" type="q1:ArrayOfPhoneContact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPhoneContact">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/LB_7C.Model" minOccurs="0" name="phoneContact" nillable="true" type="q2:PhoneContact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPhoneContactResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/LB_7C.Model" minOccurs="0" name="AddPhoneContactResult" nillable="true" type="q3:ArrayOfPhoneContact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePhoneContact">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/LB_7C.Model" minOccurs="0" name="phoneContact" nillable="true" type="q4:PhoneContact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePhoneContactResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LB_7C.Model" minOccurs="0" name="UpdatePhoneContactResult" nillable="true" type="q5:ArrayOfPhoneContact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemovePhoneContact">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="phoneContactId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemovePhoneContactResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/LB_7C.Model" minOccurs="0" name="RemovePhoneContactResult" nillable="true" type="q6:ArrayOfPhoneContact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

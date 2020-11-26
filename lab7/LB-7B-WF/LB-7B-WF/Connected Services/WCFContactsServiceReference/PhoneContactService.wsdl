@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PhoneContactService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IPhoneContactService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8733/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8733/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8733/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LB_7C.Model" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPhoneContactService_GetPhoneContacts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhoneContacts" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneContactService_GetPhoneContacts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhoneContactsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneContactService_AddPhoneContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPhoneContact" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneContactService_AddPhoneContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPhoneContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneContactService_UpdatePhoneContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePhoneContact" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneContactService_UpdatePhoneContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePhoneContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneContactService_RemovePhoneContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePhoneContact" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneContactService_RemovePhoneContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePhoneContactResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPhoneContactService">
+    <wsdl:operation name="GetPhoneContacts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPhoneContactService/GetPhoneContacts" message="tns:IPhoneContactService_GetPhoneContacts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPhoneContactService/GetPhoneContactsResponse" message="tns:IPhoneContactService_GetPhoneContacts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPhoneContact">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPhoneContactService/AddPhoneContact" message="tns:IPhoneContactService_AddPhoneContact_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPhoneContactService/AddPhoneContactResponse" message="tns:IPhoneContactService_AddPhoneContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePhoneContact">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPhoneContactService/UpdatePhoneContact" message="tns:IPhoneContactService_UpdatePhoneContact_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPhoneContactService/UpdatePhoneContactResponse" message="tns:IPhoneContactService_UpdatePhoneContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemovePhoneContact">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPhoneContactService/RemovePhoneContact" message="tns:IPhoneContactService_RemovePhoneContact_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPhoneContactService/RemovePhoneContactResponse" message="tns:IPhoneContactService_RemovePhoneContact_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPhoneContactService" type="tns:IPhoneContactService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPhoneContacts">
+      <soap:operation soapAction="http://tempuri.org/IPhoneContactService/GetPhoneContacts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPhoneContact">
+      <soap:operation soapAction="http://tempuri.org/IPhoneContactService/AddPhoneContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePhoneContact">
+      <soap:operation soapAction="http://tempuri.org/IPhoneContactService/UpdatePhoneContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemovePhoneContact">
+      <soap:operation soapAction="http://tempuri.org/IPhoneContactService/RemovePhoneContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IPhoneContactService" type="tns:IPhoneContactService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IPhoneContactService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetPhoneContacts">
+      <soap12:operation soapAction="http://tempuri.org/IPhoneContactService/GetPhoneContacts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPhoneContact">
+      <soap12:operation soapAction="http://tempuri.org/IPhoneContactService/AddPhoneContact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePhoneContact">
+      <soap12:operation soapAction="http://tempuri.org/IPhoneContactService/UpdatePhoneContact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemovePhoneContact">
+      <soap12:operation soapAction="http://tempuri.org/IPhoneContactService/RemovePhoneContact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PhoneContactService">
+    <wsdl:port name="BasicHttpBinding_IPhoneContactService" binding="tns:BasicHttpBinding_IPhoneContactService">
+      <soap:address location="http://localhost:8733/ContactService" />
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IPhoneContactService" binding="tns:NetTcpBinding_IPhoneContactService">
+      <soap12:address location="net.tcp://localhost:8090/ContactService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/ContactService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>LEVERX\stanislau.pyrkin</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

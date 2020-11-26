@@ -1,0 +1,26 @@
+﻿<div style="margin-top: 20px; display: flex; flex-direction: column">
+    <h3>Add</h3>
+    <label>Name: <input type="text" id="name" class="form-control" /></label>
+    <label>Phone: <input type="text" id="phone" class="form-control" /></label>
+    <button onclick="addContact()" class="btn btn-block">Add</button>
+</div>
+<div style="margin-top: 30px; display: flex; flex-direction: column">
+    <h3>Update</h3>
+    <input type="hidden" id="idUpdate"/>
+    <label>Name: <input type="text" id="nameUpdate" class="form-control" /></label>
+    <label>Phone: <input type="text" id="phoneUpdate" class="form-control" /></label>
+    <button onclick="updateContact()" class="btn btn-block">Update</button>
+</div>
+<div style="margin-top: 50px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="contacts-body">
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/LB_7C.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/LB_7C.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfPhoneContact">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PhoneContact" nillable="true" type="tns:PhoneContact" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPhoneContact" nillable="true" type="tns:ArrayOfPhoneContact" />
+  <xs:complexType name="PhoneContact">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhoneContact" nillable="true" type="tns:PhoneContact" />
+</xs:schema>
