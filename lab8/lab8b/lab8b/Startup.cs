@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using lab8b.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -32,7 +34,12 @@ namespace lab8b
             options.UseSqlServer(connection));
             services.AddTransient<IUserRepository, UserRepository>();
 
-            services.RegisterSwagger();
+            services.AddSwaggerGen(x =>
+            {
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                x.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +57,11 @@ namespace lab8b
             }
             app.UseHttpsRedirection();
 
-            app.RegisterSwaggerUi();
+            app.UseSwagger();
+            app.UseSwaggerUI(x =>
+            {
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "User API v1");
+            });
 
             app.UseStaticFiles();
 
